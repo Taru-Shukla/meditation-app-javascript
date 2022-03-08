@@ -18,6 +18,15 @@ const app = () =>{
     outline.style.strokeDasharray = outlineLength;
     outline.style.strokeDashoffset = outlineLength;
 
+    // pick different sounds
+    sounds.forEach(sound => {
+        sound.addEventListener("click", function(){
+            song.src = this.getAttribute("data-sound");
+            song.src = this.getAttribute("data-video");
+            checkPlaying(song);
+        })
+
+    })
 
     // play sound
     play.addEventListener("click",()=>{
@@ -26,8 +35,8 @@ const app = () =>{
 
     // select sound
     timeSelect.forEach(option => {
-        option.addEventListener('click', function(){
-            fakeDuration = this.getAttribute('data-time');
+        option.addEventListener("click", function(){
+            fakeDuration = this.getAttribute("data-time");
             timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration%60)}` ;
         });
     });
