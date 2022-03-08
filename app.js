@@ -35,6 +35,17 @@ const app = () =>{
           play.src = "./svg/play.svg";
         }
       };
-    
+
+      // animate the circle
+     song.ontimeupdate = () => {
+         let currentTime = song.currentTime;
+         let elapsed = fakeDuration - currentTime;
+         let seconds = Math.floor(elapsed % 60);
+         let minutes = Math.floor(elapsed / 60);
+
+         // animate the circle
+         let progress = outlineLength - (currentTime/fakeDuration) * outlineLength;
+         outline.style.strokeDashoffset = progress;
+     }   
 };
  app();
